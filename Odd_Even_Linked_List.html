@@ -1,0 +1,23 @@
+var oddEvenList = function(head) {
+    if(!head) return null;
+    if(!head.next || !head.next.next) return head;
+    let count = 0;
+    let currentNode = head;
+    let firstEven = currentNode.next;
+   
+    while(currentNode){
+        let nextNode = currentNode.next;
+        count++;     
+        if(!currentNode.next || !currentNode.next.next){
+            if(count % 2 === 0){
+                currentNode.next = null;
+            } else {
+               currentNode.next = firstEven; 
+            }
+        } else {
+            currentNode.next = currentNode.next.next;
+        }
+        currentNode = nextNode;
+    }
+    return head
+};
